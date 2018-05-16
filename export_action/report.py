@@ -131,7 +131,7 @@ def build_sheet(data, ws, sheet_name='report', header=None, widths=None):
         try:
             ws.append(row)
         except ValueError as e:
-            ws.append([e.message if e.message else e])
+            ws.append([e.message if hasattr(e, 'message') else e])
         except:
             ws.append(['Unknown Error'])
 
